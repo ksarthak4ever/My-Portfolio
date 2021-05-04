@@ -1,0 +1,30 @@
+# The URL the site will be built for
+base_url = "https://sarthakkumar.xyz"
+title = "Sarthak Kumar"
+description = "Welcome to my corner of the internet"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = false
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "boron"
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+generate_feed = true
+feed_filename = "index.xml"
+
+ emoji_rendering = true
+
+[extra]
+# Put all your custom variables here
+menu_links = [
+    { url = "$BASE_URL/", name = "Home" },
+    { url = "https://medium.com/@ksarthak4ever", name = "Blog" },
+    { url = "$BASE_URL/projects/", name = "Projects" },
+    { url = "resume/SarthakKumar.pdf", name = "Resume" },
+    { url = "$BASE_URL/contact/", name = "Contact" },
+]

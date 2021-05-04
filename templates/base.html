@@ -1,0 +1,78 @@
+{% import "macros/head.html" as head -%}
+{% import "macros/opengraph.html" as social -%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%- block general_meta -%}
+    {{ head::general_meta() }}
+    {%- endblock general_meta -%}
+
+    {%- block og_preview -%}
+    {{ social::og_preview() }}
+    {%- endblock og_preview -%}
+
+    {% block rss %}
+    <link rel="alternate" type="application/rss+xml" title="{{config.title}}" href="{{ get_url(path="index.xml",
+        trailing_slash=false) | safe}}">
+    {% endblock %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ get_url(path="css/base.css", trailing_slash=false) | safe }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
+        integrity="sha512-7x3zila4t2qNycrtZ31HO0NnJr8kg2VI67YLoRSyi9hGhRN66FHYWr7Axa9Y1J9tGYHVBPqIjSE1ogHrJTz51g=="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <a class="site-name" href="/">
+            <h1>Sarthak Kumar</h1>
+        </a>
+        <div class="site-description">
+            <p>Welcome to my corner of the internet</p>
+        </div>
+        <nav>
+            <div class="links">
+                {% for menu_link in config.extra.menu_links %}
+                {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+                <a {% if current_url and current_url==link_url %}class="active" {% endif %}
+                    href="{{ link_url | safe}} ">{{menu_link.name}}
+                </a>
+                {% endfor %}
+            </div>
+        </nav>
+    </header>
+    <article>{% block content %} {% endblock %}</article>
+    <footer>
+        <div class="social">
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/sarthak-kumar/" title="Linkedin"><i data-feather="linkedin"></i></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/ksarthak4ever" title="Twitter"><i data-feather="twitter"></i></a>
+                </li>
+                <li>
+                    <a href="https://github.com/ksarthak4ever" title="Github"><i data-feather="github"></i></a>
+                </li>
+                <li>
+                    <a href="{{ get_url(path="index.xml", trailing_slash=false) | safe}}" title="{{config.title}}"><i
+                            data-feather="rss"></i></a>
+                </li>
+            </ul>
+        </div>
+        <p>
+            © {{ config.title }} {{ now() | date(format="%Y") }}<br>
+            Powered by <a target="_blank" href="https://getzola.org/">Zola</a>
+        </p>
+    </footer>
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>
