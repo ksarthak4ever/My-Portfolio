@@ -24,7 +24,7 @@ feed_filename = "index.xml"
 menu_links = [
     { url = "$BASE_URL/", name = "Home" },
     { url = "https://medium.com/@ksarthak4ever", name = "Blog" },
-    { url = "$BASE_URL/projects/", name = "Projects" },
-    { url = "resume/SarthakKumar.pdf", name = "Resume" },
+#    { url = "$BASE_URL/projects/", name = "Projects" },
+#    { url = "resume/SarthakKumar.pdf", name = "Resume" },
     { url = "$BASE_URL/contact/", name = "Contact" },
 ]
